@@ -1,8 +1,14 @@
 const calcScreen = document.querySelector("#calc-screen");
 const clearBut = document.querySelector(".clear-but");
 const numButs = document.getElementsByClassName("num-but");
-const zeroBut = document.querySelector(".zero-but");
 const numButsArr = [...numButs];
+const zeroBut = document.querySelector(".zero-but");
+const equalBut = document.querySelector(".equal-but");
+const minusBut = document.querySelector(".minus-but");
+const addBut = document.querySelector(".add-but");
+const mulBut = document.querySelector(".mul-but");
+const divBut = document.querySelector(".div-but");
+const pastTotal = document.querySelector("#past-total");
 
 function addNumToScreen(numBut){
     if (calcScreen.innerText === "0") {
@@ -36,6 +42,9 @@ function addDot(zeroBut) {
         }
     }
 }
+
+
+
 
 clearBut.addEventListener('click', clearScreen);
 
