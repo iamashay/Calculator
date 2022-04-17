@@ -4,11 +4,10 @@ const numButs = document.getElementsByClassName("num-but");
 const numButsArr = [...numButs];
 const zeroBut = document.querySelector(".zero-but");
 const equalBut = document.querySelector(".equal-but");
-const minusBut = document.querySelector(".minus-but");
-const addBut = document.querySelector(".add-but");
-const mulBut = document.querySelector(".mul-but");
-const divBut = document.querySelector(".div-but");
 const pastTotal = document.querySelector("#past-total");
+const pastOperator = document.querySelector("#past-operator");
+const calcOperators = document.getElementsByClassName('operator');
+const calcOperatorsArr = [...calcOperators];
 
 function addNumToScreen(numBut){
     if (calcScreen.innerText === "0") {
@@ -27,6 +26,8 @@ function addNumToScreen(numBut){
 
 function clearScreen() {
     calcScreen.innerText = "0";
+    pastOperator.value = ''; 
+    pastTotal.value = '';
 }
 
 function addDot(zeroBut) {
@@ -44,12 +45,43 @@ function addDot(zeroBut) {
 }
 
 
+function operatorClick(operatorBut) {
+    if (pastOperator.value && pastTotal.value) {
+        switch(pastOperator.value) {
+            case '/':
+                calcScreen.innerText =  parseInt(pastTotal.value) / parseInt(calcScreen.innerText )
+                break;
+            case '*':
+                calcScreen.innerText =  parseInt(pastTotal.value) * parseInt(calcScreen.innerText )
+                break;
+            case '+':
+                calcScreen.innerText =  parseInt(pastTotal.value) + parseInt(calcScreen.innerText )
+                break;
+            case '-':
+                calcScreen.innerText =  parseInt(pastTotal.value) - parseInt(calcScreen.innerText )
+                break;
+          }
+          pastTotal.value = calcScreen.innerText;
+          pastOperator.value = '';
+    }
 
+    if 
+
+    pastTotal.value = calcScreen.innerText;
+    calcScreen.innerText = 0;
+    pastOperator.value = operatorBut.target.value;
+    operatorBut.target.classList.add("active-operator");
+
+}
 
 clearBut.addEventListener('click', clearScreen);
 
 numButsArr.forEach(element => {
-    element.addEventListener('click', addNumToScreen)
+    element.addEventListener('click', addNumToScreen);
 });
 
-zeroBut.addEventListener("click", addDot)
+calcOperatorsArr.forEach(element => {
+    element.addEventListener('click', operatorClick);
+});
+
+zeroBut.addEventListener("click", addDot);
