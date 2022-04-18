@@ -12,7 +12,7 @@ const deleteBut = document.querySelector(".delete-but");
 
 
 function addNumToScreen(numBut){
-    if (calcScreen.innerText === "0") {
+    if (calcScreen.innerText === "0" || calcScreen.innerText === "TOO LONG") {
         calcScreen.innerText = "";
     }
 
@@ -84,6 +84,14 @@ function doCalc(){
                 calcScreen.innerText =  parseInt(pastTotal.value) - parseInt(calcScreen.innerText )
                 break;
         }
+
+        if (calcScreen.innerText.length > 11){
+            calcScreen.innerText = "TOO LONG";
+            pastTotal.value = 0;
+            deactivateOperator();
+            return;
+        }
+
         pastTotal.value = calcScreen.innerText;
         pastOperator.value = '';
         deactivateOperator()
