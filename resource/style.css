@@ -79,3 +79,9 @@ button:hover {
     border: 1px solid #000;
     color: #000;
 }
+
+#top-menu {
+    display: flex;
+    justify-content: space-between;
+
+}
