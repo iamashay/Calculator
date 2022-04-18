@@ -41,7 +41,7 @@ function clearScreen() {
     deactivateOperator();
 }
 
-function addDot(dotBut) {
+function addDot() {
     if (calcScreen.innerText === "0") {
         calcScreen.innerText = "0.";
         return true;
@@ -49,7 +49,7 @@ function addDot(dotBut) {
 
     if (calcScreen.innerText.length < 11) {
         if (calcScreen.innerText.indexOf('.') === -1){
-            numValue = dotBut.target.value;
+            numValue = '.';
             calcScreen.innerText += numValue; 
         }
     }
@@ -133,6 +133,8 @@ document.body.addEventListener('keydown', (event)=>{
     }else if (event.key === ".")
     {
         addDot();
+    }else if (['+', '-', '*', '/'].indexOf(event.key) > -1){
+        document.querySelector('button[value="'+event.key+'"]').click();
     }
-
+    //console.log(event)
 });
