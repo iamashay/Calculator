@@ -88,6 +88,7 @@ function doCalc(){
         if (calcScreen.innerText.length > 11){
             calcScreen.innerText = "TOO LONG";
             pastTotal.value = 0;
+            pastOperator.value = '';
             deactivateOperator();
             return;
         }
