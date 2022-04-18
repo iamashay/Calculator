@@ -120,3 +120,15 @@ zeroBut.addEventListener("click", addDot);
 
 equalBut.addEventListener('click', doCalc);
 deleteBut.addEventListener('click', deleteNum);
+
+document.body.addEventListener('keydown', (event)=>{
+    if (!isNaN(parseInt(event.key))){
+        let numBut = {};
+        numBut.target = {};
+        numBut.target.value = event.key;
+        addNumToScreen(numBut);
+    }else if (event.key === "Backspace")
+    {
+        deleteNum();
+    }
+});
