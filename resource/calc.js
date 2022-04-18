@@ -141,6 +141,8 @@ document.body.addEventListener('keydown', (event)=>{
         addDot();
     }else if (['+', '-', '*', '/'].indexOf(event.key) > -1){
         document.querySelector('button[value="'+event.key+'"]').click();
+    }else if (event.key === "Enter"){
+        document.querySelector('.equal-but').click();
     }
     //console.log(event)
 });
