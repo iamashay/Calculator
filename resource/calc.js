@@ -2,7 +2,7 @@ const calcScreen = document.querySelector("#calc-screen");
 const clearBut = document.querySelector(".clear-but");
 const numButs = document.getElementsByClassName("num-but");
 const numButsArr = [...numButs];
-const zeroBut = document.querySelector(".zero-but");
+const dotBut = document.querySelector(".zero-but");
 const equalBut = document.querySelector(".equal-but");
 const pastTotal = document.querySelector("#past-total");
 const pastOperator = document.querySelector("#past-operator");
@@ -41,7 +41,7 @@ function clearScreen() {
     deactivateOperator();
 }
 
-function addDot(zeroBut) {
+function addDot(dotBut) {
     if (calcScreen.innerText === "0") {
         calcScreen.innerText = "0.";
         return true;
@@ -49,7 +49,7 @@ function addDot(zeroBut) {
 
     if (calcScreen.innerText.length < 11) {
         if (calcScreen.innerText.indexOf('.') === -1){
-            numValue = zeroBut.target.value;
+            numValue = dotBut.target.value;
             calcScreen.innerText += numValue; 
         }
     }
@@ -116,7 +116,7 @@ calcOperatorsArr.forEach(element => {
     element.addEventListener('click', operatorClick);
 });
 
-zeroBut.addEventListener("click", addDot);
+dotBut.addEventListener("click", addDot);
 
 equalBut.addEventListener('click', doCalc);
 deleteBut.addEventListener('click', deleteNum);
@@ -130,5 +130,9 @@ document.body.addEventListener('keydown', (event)=>{
     }else if (event.key === "Backspace")
     {
         deleteNum();
+    }else if (event.key === ".")
+    {
+        addDot();
     }
+
 });
