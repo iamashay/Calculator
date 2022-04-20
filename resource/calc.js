@@ -68,20 +68,20 @@ function doCalc(){
     if (pastOperator.value && pastTotal.value != '') {
         switch(pastOperator.value) {
             case '/':
-                if (parseInt(calcScreen.innerText) === 0){
+                if (parseFloat(calcScreen.innerText) === 0){
                     clearScreen();
                     break;
                 }
-                calcScreen.innerText =  parseInt(pastTotal.value) / parseInt(calcScreen.innerText )
+                calcScreen.innerText =  parseFloat(pastTotal.value) / parseFloat(calcScreen.innerText )
                 break;
             case '*':
-                calcScreen.innerText =  parseInt(pastTotal.value) * parseInt(calcScreen.innerText )
+                calcScreen.innerText =  parseFloat(pastTotal.value) * parseFloat(calcScreen.innerText )
                 break;
             case '+':
-                calcScreen.innerText =  parseInt(pastTotal.value) + parseInt(calcScreen.innerText )
+                calcScreen.innerText =  parseFloat(pastTotal.value) + parseFloat(calcScreen.innerText )
                 break;
             case '-':
-                calcScreen.innerText =  parseInt(pastTotal.value) - parseInt(calcScreen.innerText )
+                calcScreen.innerText =  parseFloat(pastTotal.value) - parseFloat(calcScreen.innerText )
                 break;
         }
 
@@ -129,7 +129,7 @@ equalBut.addEventListener('click', doCalc);
 deleteBut.addEventListener('click', deleteNum);
 
 document.body.addEventListener('keydown', (event)=>{
-    if (!isNaN(parseInt(event.key))){
+    if (!isNaN(parseFloat(event.key))){
         document.querySelector('button[value="'+event.key+'"]').click();
     }else if (event.key === "Backspace")
     {
